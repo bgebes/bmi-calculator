@@ -1,8 +1,15 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf');
+}
+
 body {
   margin: 0;
-  padding: 0;
+  padding-block: 0px;
+  padding-inline: 100px;
   overflow-x: hidden;
   background-color: #222831;
+  font-family: 'Inter';
 }
 
 body * {
