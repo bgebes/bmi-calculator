@@ -76,7 +76,7 @@ function RangeView({ name, range, unit, value, onChange, width, paddingY }) {
         {useCallback(
           <RangeHeaderValue>
             <TextView fontSize="1.25em" fontWeight="600">
-              {value.toString()}
+              {value}
             </TextView>
           </RangeHeaderValue>,
           [value]

@@ -6,9 +6,7 @@
 body {
   margin: 0;
   padding-block: 0px;
-  padding-inline: 75px;
   overflow-x: hidden;
-  background-color: #222831;
   font-family: 'Inter';
 }
 
@@ -16,4 +14,14 @@ body * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+header,
+main {
+  padding-inline: 75px;
+  background-color: #222831;
+}
+
+footer {
+  padding-inline: 75px;
 }

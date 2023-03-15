@@ -15,12 +15,13 @@ const StyledHyperLink = styled.a`
   opacity: ${(props) => props.opacity};
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
-  text-decoration: none;
+  text-decoration: ${(props) => props.decoration};
 `;
 
 function TextView({
   children,
   color,
+  decoration,
   opacity,
   fontSize,
   fontWeight,
@@ -35,6 +36,7 @@ function TextView({
       {...{
         children,
         color,
+        decoration,
         opacity,
         fontSize,
         fontWeight,
@@ -45,8 +47,10 @@ function TextView({
 }
 
 TextView.propTypes = {
-  children: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
   color: PropTypes.string,
+  decoration: PropTypes.string,
   opacity: PropTypes.number,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
@@ -56,6 +60,7 @@ TextView.propTypes = {
 
 TextView.defaultProps = {
   color: variablesBreakpoints.insteadOfWhite,
+  decoration: 'none',
   opacity: 1,
   fontSize: '1em',
   fontWeight: 'normal',

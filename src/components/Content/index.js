@@ -6,11 +6,11 @@ import ButtonView from '../ButtonView';
 import RangeView from '../RangeView';
 import TextView from '../TextView';
 
-const StyledContent = styled.div`
+const StyledContent = styled.main`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-block: 15vh;
+  padding-block: 10vh;
 `;
 const StyledContentTools = styled.div`
   & > div {
