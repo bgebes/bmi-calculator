@@ -1,15 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import hexOpacity from 'hex-opacity';
 import variablesBreakpoints from '../../helpers/variablesBreakpoints';
 import TextView from '../TextView';
 
 function Header() {
-  const colorsWithCustomOpacity = {
-    primary: hexOpacity.create(variablesBreakpoints.primaryColor, 0.7),
-    white: hexOpacity.create(variablesBreakpoints.insteadOfWhite, 0.7),
-  };
-
   const StyledInlineTextParts = styled.div`
     display: flex;
     flex-direction: row;
@@ -41,25 +35,16 @@ function Header() {
 
   const toolbar = (
     <StyledToolbar>
-      <TextView
-        color={colorsWithCustomOpacity.white}
-        fontSize="1.5em"
-        fontWeight="bold"
-        isHyperLink
-      >
+      <TextView opacity={0.7} fontSize="1.5em" fontWeight="bold" isHyperLink>
         Calculate
       </TextView>
       <StyledInlineTextParts href="#">
-        <TextView
-          color={colorsWithCustomOpacity.white}
-          fontSize="1.5em"
-          fontWeight="bold"
-          isHyperLink
-        >
+        <TextView opacity={0.7} fontSize="1.5em" fontWeight="bold" isHyperLink>
           What's the
         </TextView>
         <TextView
-          color={colorsWithCustomOpacity.primary}
+          color={variablesBreakpoints.primaryColor}
+          opacity={0.7}
           fontSize="1.5em"
           fontWeight="bold"
           isHyperLink
@@ -67,12 +52,7 @@ function Header() {
           &nbsp;BMI?
         </TextView>
       </StyledInlineTextParts>
-      <TextView
-        color={colorsWithCustomOpacity.white}
-        fontSize="1.5em"
-        fontWeight="bold"
-        isHyperLink
-      >
+      <TextView opacity={0.7} fontSize="1.5em" fontWeight="bold" isHyperLink>
         History
       </TextView>
     </StyledToolbar>

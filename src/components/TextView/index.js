@@ -6,6 +6,7 @@ import variablesBreakpoints from '../../helpers/variablesBreakpoints';
 function TextView({
   children,
   color,
+  opacity,
   fontSize,
   fontWeight,
   isHyperLink,
@@ -13,12 +14,14 @@ function TextView({
 }) {
   const StyledText = styled.p`
     color: ${(props) => props.color};
+    opacity: ${(props) => props.opacity};
     font-size: ${(props) => props.fontSize};
     font-weight: ${(props) => props.fontWeight};
   `;
 
   const StyledHyperLink = styled.a`
     color: ${(props) => props.color};
+    opacity: ${(props) => props.opacity};
     font-size: ${(props) => props.fontSize};
     font-weight: ${(props) => props.fontWeight};
     text-decoration: none;
@@ -30,16 +33,21 @@ function TextView({
     <StyledElement
       href={isHyperLink ? href : null}
       {...{
-        children, color, fontSize, fontWeight,
+        children,
+        color,
+        opacity,
+        fontSize,
+        fontWeight,
       }}
     />
   );
 }
 
 TextView.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.string.isRequired,
   color: PropTypes.string,
-  fontSize: PropTypes.number,
+  opacity: PropTypes.number,
+  fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
   isHyperLink: PropTypes.bool,
   href: PropTypes.string,
@@ -47,6 +55,7 @@ TextView.propTypes = {
 
 TextView.defaultProps = {
   color: variablesBreakpoints.insteadOfWhite,
+  opacity: 1,
   fontSize: '1em',
   fontWeight: 'normal',
   isHyperLink: false,
