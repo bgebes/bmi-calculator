@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import variablesBreakpoints from '../../helpers/variablesBreakpoints';
 import TextView from '../TextView';
 
-function Header() {
-  const StyledInlineTextParts = styled.div`
-    display: flex;
-    flex-direction: row;
-  `;
+const StyledInlineTextParts = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
+const StyledToolbar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: ${(props) => props.innerWidth / 3}px;
+`;
+
+const StyledHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 20px;
+`;
+
+function Header() {
   const title = (
     <StyledInlineTextParts>
       <TextView
@@ -27,14 +40,8 @@ function Header() {
 
   const { innerWidth } = window;
 
-  const StyledToolbar = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: ${innerWidth / 3}px;
-  `;
-
-  const toolbar = (
-    <StyledToolbar>
+  const toolbar = useCallback(
+    <StyledToolbar {...{ innerWidth }}>
       <TextView opacity={0.7} fontSize="1.5em" fontWeight="bold" isHyperLink>
         Calculate
       </TextView>
@@ -55,15 +62,9 @@ function Header() {
       <TextView opacity={0.7} fontSize="1.5em" fontWeight="bold" isHyperLink>
         History
       </TextView>
-    </StyledToolbar>
+    </StyledToolbar>,
+    [innerWidth]
   );
-
-  const StyledHeader = styled.header`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-block: 20px;
-  `;
 
   return (
     <StyledHeader>

@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import variablesBreakpoints from '../../helpers/variablesBreakpoints';
+
+const StyledText = styled.p`
+  color: ${(props) => props.color};
+  opacity: ${(props) => props.opacity};
+  font-size: ${(props) => props.fontSize};
+  font-weight: ${(props) => props.fontWeight};
+`;
+
+const StyledHyperLink = styled.a`
+  color: ${(props) => props.color};
+  opacity: ${(props) => props.opacity};
+  font-size: ${(props) => props.fontSize};
+  font-weight: ${(props) => props.fontWeight};
+  text-decoration: none;
+`;
 
 function TextView({
   children,
@@ -12,24 +27,9 @@ function TextView({
   isHyperLink,
   href,
 }) {
-  const StyledText = styled.p`
-    color: ${(props) => props.color};
-    opacity: ${(props) => props.opacity};
-    font-size: ${(props) => props.fontSize};
-    font-weight: ${(props) => props.fontWeight};
-  `;
-
-  const StyledHyperLink = styled.a`
-    color: ${(props) => props.color};
-    opacity: ${(props) => props.opacity};
-    font-size: ${(props) => props.fontSize};
-    font-weight: ${(props) => props.fontWeight};
-    text-decoration: none;
-  `;
-
   const StyledElement = isHyperLink ? StyledHyperLink : StyledText;
 
-  return (
+  return useCallback(
     <StyledElement
       href={isHyperLink ? href : null}
       {...{
@@ -39,7 +39,8 @@ function TextView({
         fontSize,
         fontWeight,
       }}
-    />
+    />,
+    [children, color, opacity, fontSize, fontWeight]
   );
 }
 

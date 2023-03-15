@@ -3,18 +3,21 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import variablesBreakpoints from '../../helpers/variablesBreakpoints';
 
-const StyledBadge = styled.div`
+const StyledButton = styled.button`
   background-color: ${(props) => props.bgColor};
   margin-inline: ${(props) => props.marginX};
   margin-block: ${(props) => props.marginY};
   padding-inline: ${(props) => props.paddingX};
   padding-block: ${(props) => props.paddingY};
+  border: 0px;
   border-radius: 10px;
-  box-shadow: 0px 4px 4px ${variablesBreakpoints.shadowColor};
+  cursor: pointer;
+  box-shadow: 0px 4px 8px ${variablesBreakpoints.shadowColor};
 `;
 
-function BadgeView({
+function ButtonView({
   children,
+  onClick,
   bgColor,
   marginX,
   marginY,
@@ -22,22 +25,16 @@ function BadgeView({
   paddingY,
 }) {
   return useCallback(
-    <StyledBadge
-      {...{
-        children,
-        bgColor,
-        marginX,
-        marginY,
-        paddingX,
-        paddingY,
-      }}
+    <StyledButton
+      {...{ children, onClick, bgColor, marginX, marginY, paddingX, paddingY }}
     />,
-    [children, bgColor, marginX, marginY, paddingX, paddingY]
+    [children, onClick, bgColor, marginX, marginY, paddingX, paddingY]
   );
 }
 
-BadgeView.propTypes = {
+ButtonView.propTypes = {
   children: PropTypes.element.isRequired,
+  onClick: PropTypes.func,
   bgColor: PropTypes.string,
   marginX: PropTypes.string,
   marginY: PropTypes.string,
@@ -45,12 +42,13 @@ BadgeView.propTypes = {
   paddingY: PropTypes.string,
 };
 
-BadgeView.defaultProps = {
+ButtonView.defaultProps = {
   bgColor: variablesBreakpoints.primaryColor,
-  marginX: '0px',
-  marginY: '0px',
-  paddingX: '15px',
-  paddingY: '4px',
+  onClick: () => {},
+  marginX: '0',
+  marginY: '0',
+  paddingX: '50px',
+  paddingY: '25px',
 };
 
-export default BadgeView;
+export default ButtonView;
