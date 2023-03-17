@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { BrowserRouter as Router } from 'react-router-dom';
 import BMIContextProvider from './contexts/BMIContext';
+import App from './App';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BMIContextProvider>
-    <App />
-  </BMIContextProvider>
+  <Router>
+    <BMIContextProvider>
+      <App />
+    </BMIContextProvider>
+  </Router>
 );

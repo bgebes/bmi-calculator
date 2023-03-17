@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { calculateBMI } from '../../actions/actions';
 import { useBMI } from '../../contexts/BMIContext';
 import variablesBreakpoints from '../../helpers/variablesBreakpoints';
 import ButtonView from '../ButtonView';
@@ -10,7 +11,7 @@ const StyledContent = styled.main`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: 10vh;
+  padding-block: 8.7vh;
 `;
 const StyledContentTools = styled.div`
   & > div {
@@ -27,7 +28,7 @@ const StyledContentImage = styled.img`
     1;
 `;
 
-function Content() {
+function CalculatorContent() {
   const [BMIInfo, setBMIInfo] = useBMI();
 
   const heightRangeView = (
@@ -53,8 +54,16 @@ function Content() {
     />
   );
 
+  const callback = (formula) => {
+    setBMIInfo((state) => ({ ...state, bmi: formula }));
+  };
+
+  const onClick = () => {
+    calculateBMI(BMIInfo.height, BMIInfo.weight, callback);
+  };
+
   const calculateButton = (
-    <ButtonView marginY="30px">
+    <ButtonView marginY="30px" onClick={onClick}>
       <TextView fontSize="1.5em" fontWeight="600">
         Calculate BMI
       </TextView>
@@ -76,4 +85,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default CalculatorContent;

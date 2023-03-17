@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useBMI } from '../../contexts/BMIContext';
 import variablesBreakpoints from '../../helpers/variablesBreakpoints';
 import TextView from '../TextView';
 
@@ -14,7 +15,7 @@ const FooterItem = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-block: 2.25em;
+  padding-block: 3em;
 `;
 
 const FooterSubItem = styled.div`
@@ -47,6 +48,8 @@ const FooterImageItem = styled.img`
 `;
 
 function Footer() {
+  const [BMIInfo] = useBMI();
+
   const BMIResultSection = (
     <FooterItem>
       <TextView
@@ -58,7 +61,7 @@ function Footer() {
       </TextView>
       <FooterItemBody alignItems="center">
         <TextView color={variablesBreakpoints.primaryColor} fontSize="2em">
-          22.75
+          {BMIInfo.bmi === 0 ? '-' : BMIInfo.bmi}
         </TextView>
       </FooterItemBody>
     </FooterItem>

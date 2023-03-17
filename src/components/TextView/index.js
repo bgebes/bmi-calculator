@@ -1,16 +1,26 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import variablesBreakpoints from '../../helpers/variablesBreakpoints';
 
-const StyledText = styled.p`
+const StyledText = styled.span`
   color: ${(props) => props.color};
   opacity: ${(props) => props.opacity};
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
+  white-space: pre-line;
 `;
 
 const StyledHyperLink = styled.a`
+  color: ${(props) => props.color};
+  opacity: ${(props) => props.opacity};
+  font-size: ${(props) => props.fontSize};
+  font-weight: ${(props) => props.fontWeight};
+  text-decoration: ${(props) => props.decoration};
+`;
+
+const StyledPageLink = styled(Link)`
   color: ${(props) => props.color};
   opacity: ${(props) => props.opacity};
   font-size: ${(props) => props.fontSize};
@@ -26,12 +36,21 @@ function TextView({
   fontSize,
   fontWeight,
   isHyperLink,
+  isPageLink,
   href,
 }) {
-  const StyledElement = isHyperLink ? StyledHyperLink : StyledText;
+  let StyledElement;
+  if (isPageLink) {
+    StyledElement = StyledPageLink;
+  } else if (isHyperLink) {
+    StyledElement = StyledHyperLink;
+  } else {
+    StyledElement = StyledText;
+  }
 
   return useCallback(
     <StyledElement
+      to={isPageLink ? href : null}
       href={isHyperLink ? href : null}
       {...{
         children,
@@ -42,7 +61,16 @@ function TextView({
         fontWeight,
       }}
     />,
-    [children, color, opacity, fontSize, fontWeight]
+    [
+      children,
+      color,
+      opacity,
+      fontSize,
+      fontWeight,
+      isPageLink,
+      isHyperLink,
+      href,
+    ]
   );
 }
 
@@ -55,6 +83,7 @@ TextView.propTypes = {
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
   isHyperLink: PropTypes.bool,
+  isPageLink: PropTypes.bool,
   href: PropTypes.string,
 };
 
@@ -65,6 +94,7 @@ TextView.defaultProps = {
   fontSize: '1em',
   fontWeight: 'normal',
   isHyperLink: false,
+  isPageLink: false,
   href: '#',
 };
 

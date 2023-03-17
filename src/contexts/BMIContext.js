@@ -5,8 +5,8 @@ export const BMIContext = createContext();
 
 export default function BMIContextProvider({ children }) {
   const [BMIInfo, setBMIInfo] = useState({
-    weight: 250,
-    height: 150,
+    weight: 85,
+    height: 190,
     bmi: 0,
   });
 

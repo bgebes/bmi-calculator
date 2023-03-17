@@ -28,11 +28,12 @@ function Header() {
         color={variablesBreakpoints.primaryColor}
         fontSize="1.5em"
         fontWeight="bold"
-        isHyperLink
+        isPageLink
+        href="/"
       >
         BMI&nbsp;
       </TextView>
-      <TextView fontSize="1.5em" fontWeight="bold" isHyperLink>
+      <TextView fontSize="1.5em" fontWeight="bold" isPageLink href="/">
         Calculator
       </TextView>
     </StyledInlineTextParts>
@@ -42,11 +43,23 @@ function Header() {
 
   const toolbar = useCallback(
     <StyledToolbar {...{ innerWidth }}>
-      <TextView opacity={0.7} fontSize="1.5em" fontWeight="bold" isHyperLink>
+      <TextView
+        opacity={0.7}
+        fontSize="1.5em"
+        fontWeight="bold"
+        isPageLink
+        href="/"
+      >
         Calculate
       </TextView>
       <StyledInlineTextParts href="#">
-        <TextView opacity={0.7} fontSize="1.5em" fontWeight="bold" isHyperLink>
+        <TextView
+          opacity={0.7}
+          fontSize="1.5em"
+          fontWeight="bold"
+          isPageLink
+          href="/what-is-the-bmi"
+        >
           What's the
         </TextView>
         <TextView
@@ -54,12 +67,19 @@ function Header() {
           opacity={0.7}
           fontSize="1.5em"
           fontWeight="bold"
-          isHyperLink
+          isPageLink
+          href="/what-is-the-bmi"
         >
           &nbsp;BMI?
         </TextView>
       </StyledInlineTextParts>
-      <TextView opacity={0.7} fontSize="1.5em" fontWeight="bold" isHyperLink>
+      <TextView
+        opacity={0.7}
+        fontSize="1.5em"
+        fontWeight="bold"
+        isPageLink
+        href="/history"
+      >
         History
       </TextView>
     </StyledToolbar>,
