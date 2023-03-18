@@ -13,11 +13,13 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "moment": "^2.29.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-router-dom": "^6.9.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
+    "react-table": "^7.8.0",
     "styled-components": "^5.3.8"
   },
   "devDependencies": {

@@ -75,8 +75,11 @@ function TextView({
 }
 
 TextView.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.any,
+  ]).isRequired,
   color: PropTypes.string,
   decoration: PropTypes.string,
   opacity: PropTypes.number,

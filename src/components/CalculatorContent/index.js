@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { calculateBMI } from '../../actions/actions';
+import { calculateBMI, insertEntry } from '../../actions/actions';
 import { useBMI } from '../../contexts/BMIContext';
 import variablesBreakpoints from '../../helpers/variablesBreakpoints';
 import ButtonView from '../ButtonView';
@@ -38,7 +38,10 @@ function CalculatorContent() {
       unit="cm"
       value={BMIInfo.height}
       onChange={(event) => {
-        setBMIInfo((state) => ({ ...state, height: event.target.value }));
+        setBMIInfo((state) => ({
+          ...state,
+          height: parseInt(event.target.value, 10),
+        }));
       }}
     />
   );
@@ -49,7 +52,10 @@ function CalculatorContent() {
       unit="kg"
       value={BMIInfo.weight}
       onChange={(event) => {
-        setBMIInfo((state) => ({ ...state, weight: event.target.value }));
+        setBMIInfo((state) => ({
+          ...state,
+          weight: parseInt(event.target.value, 10),
+        }));
       }}
     />
   );
@@ -59,7 +65,8 @@ function CalculatorContent() {
   };
 
   const onClick = () => {
-    calculateBMI(BMIInfo.height, BMIInfo.weight, callback);
+    const bmi = calculateBMI(BMIInfo.height, BMIInfo.weight, callback);
+    insertEntry(BMIInfo.height, BMIInfo.weight, bmi);
   };
 
   const calculateButton = (

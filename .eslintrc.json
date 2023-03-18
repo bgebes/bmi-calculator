@@ -13,6 +13,8 @@
   "plugins": ["react"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-extraneous-dependencies": "off"
   }
 }
