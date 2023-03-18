@@ -4,7 +4,7 @@ import variablesBreakpoints from '../../helpers/variablesBreakpoints';
 import TextView from '../TextView';
 
 const StyledContent = styled.main`
-  height: calc(100vh - 69px);
+  min-height: calc(100vh - 69px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +33,7 @@ const StyledContentFooter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 1em;
+  padding-block: 1em;
 `;
 
 function WITBContent() {

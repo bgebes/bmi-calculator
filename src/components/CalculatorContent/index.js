@@ -8,6 +8,7 @@ import RangeView from '../RangeView';
 import TextView from '../TextView';
 
 const StyledContent = styled.main`
+  min-height: calc(100vh - 69px);
   display: flex;
   justify-content: space-between;
   align-items: center;

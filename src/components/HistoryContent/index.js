@@ -6,7 +6,7 @@ import columns from '../../helpers/tableColumns';
 import { getEntries } from '../../actions/actions';
 
 const StyledContent = styled.main`
-  height: calc(100vh - 69px);
+  min-height: calc(100vh - 69px);
   padding-top: 20px;
 `;
 
